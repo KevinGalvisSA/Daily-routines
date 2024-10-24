@@ -10,9 +10,9 @@ exports.registrarUsuario = async (req, res) => {
         if (usuarioExistente) return res.status(400).json({ message: 'El usuario ya existe' });
 
         const nuevoUsuario = new User({
-            name: name,
+            nombre_usuario: name,
             email: email,
-            password: password  
+            contraseña: password  
         });
         await nuevoUsuario.save();
         res.status(201).json({ message: 'Usuario creado con éxito', user: nuevoUsuario });
@@ -29,7 +29,7 @@ exports.iniciarSesion = async (req, res) => {
         const usuario = await User.findOne({ email });
         if (!usuario) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        const esContrasenaValida = await bcrypt.compare(password, usuario.password);
+        const esContrasenaValida = await bcrypt.compare(password, usuario.contraseña);
         if (!esContrasenaValida) return res.status(400).json({ message: 'Contraseña incorrecta' });
 
         // Generar el token JWT con un tiempo de expiración de 30 minutos

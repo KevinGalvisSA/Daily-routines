@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+const usuarioSchema = new mongoose.Schema({
+    nombre_usuario: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    date: { type: Date, default: Date.now }
-}, { versionKey: false });  
+    contraseña: { type: String, required: true },
+    fecha_de_creacion: { type: Date, default: Date.now }
+}, { versionKey: false });
 
-// Método para encriptar contraseñas
-userSchema.pre('save', async function(next) {
-    if (!this.isModified('password')) return next();
+// Encriptar contraseña antes de guardar
+usuarioSchema.pre('save', async function(next) {
+    if (!this.isModified('contraseña')) return next();
     const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+    this.contraseña = await bcrypt.hash(this.contraseña, salt);
     next();
 });
 
-const User = mongoose.model('user', userSchema, 'user');
-module.exports = User;
+const Usuario = mongoose.model('Usuario', usuarioSchema);
+module.exports = Usuario;
