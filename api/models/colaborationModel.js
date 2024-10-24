@@ -6,5 +6,5 @@ const colaboracionSchema = new mongoose.Schema({
     rol: { type: String, enum: ['creador', 'colaborador'], required: true }
 }, { versionKey: false });
 
-const Colaboracion = mongoose.model('Colaboracion', colaboracionSchema);
+const Colaboracion = mongoose.model('Colaboracion', colaboracionSchema, 'Colaboracion');
 module.exports = Colaboracion;

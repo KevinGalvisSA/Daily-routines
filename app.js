@@ -5,6 +5,11 @@ const connectDB = require('./api/server/db');
 const app = express();
 const userRouter = require('./api/routes/userRoute');
 const activyRouter = require('./api/routes/activityRoute');
+const objetivoRouter = require('./api/routes/objectiveRoute');
+const colaboracionRouter = require('./api/routes/colaborationRoute');
+const recordatorioRouter = require('./api/routes/recordatoryRoute');
+const categoriaRouter = require('./api/routes/categoryRoute');
+const etiquetaRouter = require('./api/routes/tagRoute');
 
 // Conectar a MongoDB
 connectDB();
@@ -26,6 +31,11 @@ app.get('/', (req, res) => {
 
 app.use("/user", userRouter)
 app.use("/activity", activyRouter)
+app.use('/objective', objetivoRouter);
+app.use('/colaboration', colaboracionRouter);
+app.use('/recordatory', recordatorioRouter);
+app.use('/category', categoriaRouter);
+app.use('/tag', etiquetaRouter)
 
 // Iniciar el server
 const PORT = process.env.EXPRESS_PORT;

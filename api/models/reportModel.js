@@ -9,5 +9,5 @@ const reporteSchema = new mongoose.Schema({
     objetivos_completados: { type: Number }
 }, { versionKey: false });
 
-const Reporte = mongoose.model('Reporte', reporteSchema);
+const Reporte = mongoose.model('Reporte', reporteSchema, 'Reporte');
 module.exports = Reporte;

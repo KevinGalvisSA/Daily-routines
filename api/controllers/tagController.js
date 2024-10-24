@@ -1,13 +1,13 @@
-const Etiqueta = require('../models/etiquetaModel');
+const Etiqueta = require('../models/tagModel');
 
 // Crear etiqueta
 exports.crearEtiqueta = async (req, res) => {
-    const { actividades_fk, nombre, categoria_fk } = req.body;
+    const { actividades_fk, nombre, categoria } = req.body;
     try {
         const nuevaEtiqueta = new Etiqueta({
             actividades_fk,
             nombre,
-            categoria_fk
+            categoria
         });
         await nuevaEtiqueta.save();
         res.status(201).json({ message: 'Etiqueta creada con éxito', etiqueta: nuevaEtiqueta });

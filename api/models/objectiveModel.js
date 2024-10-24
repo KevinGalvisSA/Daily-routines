@@ -8,5 +8,5 @@ const objetivoSchema = new mongoose.Schema({
     estado: { type: String, enum: ['pendiente', 'completado'], default: 'pendiente' }
 }, { versionKey: false });
 
-const Objetivo = mongoose.model('Objetivo', objetivoSchema);
+const Objetivo = mongoose.model('Objetivo', objetivoSchema, 'Objetivo');
 module.exports = Objetivo;

@@ -7,5 +7,5 @@ const hitoSchema = new mongoose.Schema({
     completado: { type: Boolean, default: false }
 }, { versionKey: false });
 
-const Hito = mongoose.model('Hito', hitoSchema);
+const Hito = mongoose.model('Hito', hitoSchema, 'Hito');
 module.exports = Hito;

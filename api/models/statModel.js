@@ -7,5 +7,5 @@ const estadisticaSchema = new mongoose.Schema({
     objetivos_completados: { type: Number }
 }, { versionKey: false });
 
-const Estadistica = mongoose.model('Estadistica', estadisticaSchema);
+const Estadistica = mongoose.model('Estadistica', estadisticaSchema, 'Estadistica');
 module.exports = Estadistica;

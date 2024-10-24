@@ -1,8 +1,11 @@
 const express = require('express');
-const { crearObjetivo, obtenerObjetivos } = require('../controllers/objectiveController');
-const objectiveRouter = express.Router();
+const { crearObjetivo, obtenerObjetivos, obtenerObjetivoPorId, actualizarObjetivo, eliminarObjetivo } = require('../controllers/objectiveController');
+const objetivoRouter = express.Router();
 
-objectiveRouter.post('/objetivo', crearObjetivo);
-objectiveRouter.get('/objetivo', obtenerObjetivos);
+objetivoRouter.post('/', crearObjetivo);
+objetivoRouter.get('/', obtenerObjetivos);
+objetivoRouter.get('/:id', obtenerObjetivoPorId);
+objetivoRouter.put('/:id', actualizarObjetivo);
+objetivoRouter.delete('/:id', eliminarObjetivo);
 
-module.exports = objectiveRouter;
+module.exports = objetivoRouter;

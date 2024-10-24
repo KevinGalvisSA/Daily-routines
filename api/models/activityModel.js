@@ -10,5 +10,5 @@ const actividadSchema = new mongoose.Schema({
     fecha_de_actualizacion: { type: Date }
 }, { versionKey: false });
 
-const Actividad = mongoose.model('Actividad', actividadSchema);
+const Actividad = mongoose.model('Actividad', actividadSchema, 'Actividad');
 module.exports = Actividad;

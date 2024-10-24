@@ -6,5 +6,5 @@ const recordatorioSchema = new mongoose.Schema({
     mensaje: { type: String }
 }, { versionKey: false });
 
-const Recordatorio = mongoose.model('Recordatorio', recordatorioSchema);
+const Recordatorio = mongoose.model('Recordatorio', recordatorioSchema, 'Recordatorio');
 module.exports = Recordatorio;

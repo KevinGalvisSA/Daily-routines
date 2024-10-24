@@ -1,4 +1,4 @@
-const Estadistica = require('../models/estadisticaModel');
+const Estadistica = require('../models/statModel');
 
 // Crear estadística
 exports.crearEstadistica = async (req, res) => {
