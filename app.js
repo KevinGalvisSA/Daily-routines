@@ -1,11 +1,19 @@
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 const connectDB = require('./api/server/db');
 const app = express();
 const userRouter = require('./api/routes/userRoute')
 
 // Conectar a MongoDB
 connectDB();
+
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 30 * 60 * 1000 } // Expira en 30 minutos (milisegundos)
+}));
 
 // Middleware para parsing JSON
 app.use(express.json());
@@ -19,4 +27,5 @@ app.use("/api", userRouter)
 
 // Iniciar el server
 const PORT = process.env.EXPRESS_PORT;
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+const HOST = process.env.EXPRESS_HOST;
+app.listen(PORT, () => console.log(`http://${HOST}:${PORT}`));
